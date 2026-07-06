@@ -20,7 +20,7 @@ class SPEConfig:
     wavelet     = 'db4'
     wavelet_level = 2
     save_root   = './train_data'
-    save_vis    = False   # 设为 True 可额外保存 SPE 特征的可视化 PNG
+    save_vis    = False  
     seed        = 42
     max_samples = None
 
@@ -33,6 +33,6 @@ class TrainConfig:
     lr             = 3e-4
     weight_decay   = 5e-4
     max_lr         = 1e-3
-    use_adaptive_t = True    # True=自适应T, False=固定t=10
+    use_adaptive_t = False  
     num_workers    = 4
     save_root      = './results'
