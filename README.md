@@ -93,13 +93,3 @@ Key settings:
 | `TrainConfig`| `psnr_target`     | Early stop when PSNR reaches this value      |
 
 
-## Citation
-
-```bibtex
-@inproceedings{mjolnir2025,
-  title     = {Mjölnir: Breaking the Shield of Perturbation-Protected Gradients via Adaptive Diffusion},
-  booktitle = {Proceedings of the AAAI Conference on Artificial Intelligence},
-  year      = {2025}
-}
-```
-
