@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 # Venom: Gradient Inversion Attack under Differential Privacy
 
 PyTorch implementation of a gradient inversion attack for federated learning with differential privacy, based on [Venom (AAAI 2026)](https://arxiv.org/abs/xxxx) and [Mjölnir (AAAI 2025)](https://arxiv.org/abs/2407.05285).
@@ -12,9 +12,9 @@ pip install torch torchvision numpy Pillow PyWavelets tqdm matplotlib
 ## Project Structure
 
 ```
-├── 1_get_data.py               # Download and save dataset
-├── 2_generate_features.py      # SPE feature extraction with DP noise
-├── 3_train.py                  # Train Diff-LRN reconstruction network
+├── get_data.py               # Download and save dataset
+├── generate_features.py      # SPE feature extraction with DP noise
+├── train.py                  # Train Diff-LRN reconstruction network
 │
 ├── configs/
 │   └── config.py               # Centralized configuration
