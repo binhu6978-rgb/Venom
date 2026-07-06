@@ -7,8 +7,7 @@ from .wavelet import wavelet_refine
 def spe_extract(fc_weight_grad, fc_bias_grad, sigma2, reshape_target,
                 wavelet='db4', level=2):
     """
-    Structural Prior Extraction (论文公式 3-5) + Wavelet Refinement。
-
+    Structural Prior Extraction
     Args:
         fc_weight_grad : Tensor [K, d]
         fc_bias_grad   : Tensor [K]
@@ -20,10 +19,8 @@ def spe_extract(fc_weight_grad, fc_bias_grad, sigma2, reshape_target,
     """
     K = fc_bias_grad.shape[0]
 
-    # 公式 3：能量评分
     E = torch.norm(fc_weight_grad, dim=1) * fc_bias_grad.abs()
 
-    # 公式 4：动态阈值过滤
     mu_E, sigma_E = E.mean(), E.std()
     gamma  = min(2.0, float(torch.log(torch.tensor(float(K))).sqrt()))
     S_mask = E > (mu_E + gamma * sigma_E)
@@ -31,7 +28,6 @@ def spe_extract(fc_weight_grad, fc_bias_grad, sigma2, reshape_target,
         S_mask = torch.zeros_like(E, dtype=torch.bool)
         S_mask[E.argmax()] = True
 
-    # 公式 5：能量加权融合
     lambda_reg = sigma2 / (fc_bias_grad[S_mask].abs().max().item() ** 2 + 1e-8)
     E_S   = E[S_mask]
     w     = E_S / (E_S.sum() + 1e-8)
@@ -49,9 +45,6 @@ def spe_extract(fc_weight_grad, fc_bias_grad, sigma2, reshape_target,
 def fc_direct_extract(fc_weight_grad, fc_bias_grad, reshape_target):
     """
     直接 FC 相除（对比实验用）：x̂ = ∇W_j / ∇b_j
-
-    取 |∇b_j| 最大的类，不做能量筛选和 wavelet 精炼。
-
     Args:
         fc_weight_grad : Tensor [K, d]
         fc_bias_grad   : Tensor [K]
