@@ -117,9 +117,3 @@ Analytically recovers deep feature representations from perturbed gradients via 
 **Stage 2 — Diffusion-driven Liquid Recovery Network (Diff-LRN)**  
 A one-step deterministic diffusion model enhanced with liquid neural dynamics (LTE module) that adapts its denoising behavior to unknown and heterogeneous DP noise.
 
----
-
-## Project Status
-
-Code will be uploaded soon.
->>>>>>> 6b236a46b7fb8f947b8a95837317a823b633406c
